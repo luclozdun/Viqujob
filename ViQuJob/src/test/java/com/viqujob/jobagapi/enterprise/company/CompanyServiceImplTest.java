@@ -73,23 +73,23 @@ public class CompanyServiceImplTest {
     }
 
     @Test
-    @DisplayName("When Find By Id But Section Not Exist")
-    public void WhenFindByIdButSectionNotExist(){
+    @DisplayName("When Find By Id But Company Not Exist")
+    public void WhenFindByIdButCompanyNotExist(){
         //arrange
         when(companyRepository.findById(69L)).thenReturn(Optional.of(company));
 
         //act
-        String message = "Resource Company not found for Id with value 69";
+        String message = "Resource Company not found for Id with value 1337";
         Throwable exception = catchThrowable(()->{
-            companyServiceImpl.getCompanyById(69L);
+            companyServiceImpl.getCompanyById(1337L);
         });
         //assert
         assertThat(exception).isInstanceOf(ResourceNotFoundException.class).hasMessage(message);
     }
 
     @Test
-    @DisplayName("When Save A Company")
-    public void WhenSaveACompany(){
+    @DisplayName("When Create A Company")
+    public void WhenCreateACompany(){
         //arrange
         when(companyRepository.save(company)).thenReturn(company);
         Employer testEmployer = new Employer();
@@ -105,13 +105,13 @@ public class CompanyServiceImplTest {
     }
 
     @Test
-    @DisplayName("When Save A Company But Company Not Exist")
-    public void WhenSaveACompanyButCompanyNotExist(){
+    @DisplayName("When Create A Company But Company Not Exist")
+    public void WhenCreateACompanyButCompanyNotExist(){
         //arrange
         when(companyRepository.findById(69L)).thenReturn(Optional.of(company));
 
         //act
-        String message = "Resource Company not found for Id with value 69";
+        String message = "Resource Company not found for Id with value 1337";
         Throwable exception = catchThrowable(()->{
             companyServiceImpl.getCompanyById(1337L);
         });
@@ -144,7 +144,7 @@ public class CompanyServiceImplTest {
         when(companyRepository.findById(69L)).thenReturn(Optional.of(company));
 
         //act
-        String message = "Resource Company not found for Id with value 69";
+        String message = "Resource Company not found for Id with value 1337";
         Throwable exception = catchThrowable(()->{
             companyServiceImpl.getCompanyById(1337L);
         });
@@ -180,7 +180,7 @@ public class CompanyServiceImplTest {
         when(companyRepository.findById(69L)).thenReturn(Optional.of(company));
 
         //act
-        String message = "Resource Company not found for Id with value 69";
+        String message = "Resource Company not found for Id with value 1337";
         Throwable exception = catchThrowable(()->{
             companyServiceImpl.getCompanyById(1337L);
         });

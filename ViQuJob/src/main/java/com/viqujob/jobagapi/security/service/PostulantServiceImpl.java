@@ -35,6 +35,7 @@ public class PostulantServiceImpl implements PostulantService {
     @Override
     public Postulant createPostulant(Postulant postulant) {
         if (userRepository.existsByEmail(postulant.getEmail())) {
+            System.out.println("x");
             throw new ResourceIncorrectData("El email ya esta en uso");
         }
         return postulantRepository.save(postulant);

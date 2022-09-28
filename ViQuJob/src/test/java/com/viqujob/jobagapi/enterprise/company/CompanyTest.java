@@ -26,8 +26,14 @@ public class CompanyTest {
      
     public void company() {
         Employer employer = new Employer();
+        employer.setId(123L);
         Date date = new Date();
         Sector sector = new Sector();
+        sector.setDescription("description");
+        sector.setId(48L);
+        sector.setName("name");
+
+        company = new Company();
         company.setCreatedAt(date);
         company.setDescription("description");
         company.setDireccion("direccion");
@@ -41,7 +47,7 @@ public class CompanyTest {
 
 
         assertEquals(date, company.getCreatedAt());
-        assertEquals("direccion", company.getDescription());
+        assertEquals("description", company.getDescription());
         assertEquals("direccion", company.getDireccion());
         assertEquals(employer, company.getEmployeer());
         assertEquals(2L, company.getId());

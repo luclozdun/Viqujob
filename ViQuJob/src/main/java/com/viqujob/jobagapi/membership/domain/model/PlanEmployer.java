@@ -110,4 +110,8 @@ public class PlanEmployer {
         this.employeer = employeer;
         return this;
     }
+
+    public Object setEmployeer(long l, long m) {
+        return null;
+    }
 }

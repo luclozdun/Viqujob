@@ -24,6 +24,7 @@ public class JobOfferServiceImpl implements JobOfferService {
         return jobOfferRepository.findByEmployeerId(employeerId, pageable);
     }
 
+    //////////////////////////////
     @Override
     public JobOffer getJobOfferByIdAndEmployeerId(Long employeerId, Long jobOfferId) {
         return jobOfferRepository.findByIdAndEmployeerId(employeerId, jobOfferId)

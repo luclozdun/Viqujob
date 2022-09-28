@@ -4,6 +4,7 @@ import com.viqujob.jobagapi.exception.ResourceNotFoundException;
 import com.viqujob.jobagapi.membership.domain.model.PlanEmployer;
 import com.viqujob.jobagapi.membership.domain.repository.PlanEmployerRepository;
 import com.viqujob.jobagapi.membership.domain.service.PlanEmployerService;
+import com.viqujob.jobagapi.security.domain.model.Employer;
 import com.viqujob.jobagapi.security.domain.repository.EmployerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +38,11 @@ public class PlanEmployerServiceImpl implements PlanEmployerService {
     @Override
     public PlanEmployer createPlanemployeer(Long employeerId, PlanEmployer planemployeer) {
 
-        return employeerRepository.findById(employeerId).map(employeer -> {
-
-            planemployeer.setEmployeer(employeer);
-            return planemployeerRepository.save(planemployeer);
-        }).orElseThrow(() -> new ResourceNotFoundException(
-                "Employeer", "Id", employeerId));
+        Employer employer = employeerRepository.findById(employeerId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Employeer", "Id", employeerId));
+        planemployeer.setEmployeer(employer);
+        return planemployeerRepository.save(planemployeer);
 
     }
 

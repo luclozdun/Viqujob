@@ -12,6 +12,7 @@ import com.viqujob.jobagapi.ability.domain.model.Skill;
 import com.viqujob.jobagapi.ability.domain.model.Studies;
 import com.viqujob.jobagapi.security.domain.model.Postulant;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -113,8 +114,8 @@ public class ProfessionalProfile {
         return skills;
     }
 
-    public ProfessionalProfile setSkills(List<Skill> skills) {
-        this.skills = skills;
+    public ProfessionalProfile setSkills(ArrayList<Skill> arraySkiList) {
+        this.skills = arraySkiList;
         return this;
     }
 

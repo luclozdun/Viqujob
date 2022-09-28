@@ -32,6 +32,5 @@ public class PostulantTest {
         postulant.setUpdateAt(new Date());
 
         assertEquals("estudiante", postulant.getCivil_status());
-
-}
+    }
 }

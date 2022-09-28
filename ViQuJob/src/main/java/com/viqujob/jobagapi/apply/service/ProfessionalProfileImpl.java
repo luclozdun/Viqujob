@@ -44,6 +44,7 @@ public class ProfessionalProfileImpl implements ProfessionalProfileService {
                 return professionalprofileRepository.findByPostulantId(postulantId, pageable);
         }
 
+        /* /////// */
         @Override
         public ProfessionalProfile getProfessionalProfileByIdAndPostulantId(Long postulantId,
                         Long professionalprofileId) {
@@ -109,6 +110,7 @@ public class ProfessionalProfileImpl implements ProfessionalProfileService {
 
         }
 
+        //////////
         @Override
         public Page<ProfessionalProfile> getAllProfessionalProfileByStudiesId(Long studiesId, Pageable pageable) {
                 return studiesRepository.findById(studiesId).map(studies -> {
@@ -154,6 +156,7 @@ public class ProfessionalProfileImpl implements ProfessionalProfileService {
                                 .orElseThrow(() -> new ResourceNotFoundException("Languages", "Id", languagesId));
         }
 
+        ////
         @Override
         public ProfessionalProfile createProfessionalProfile(Long postulantId,
                         ProfessionalProfile professionalProfile) {

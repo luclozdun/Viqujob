@@ -1,0 +1,10 @@
+pipeline{
+  agent{ label 'master' }
+    stages{
+      stage('test'){
+        dir('build'){
+          sh 'mvn clean compile test'
+        }
+      }
+    }
+}

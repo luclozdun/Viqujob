@@ -62,9 +62,9 @@ public class SectorServiceImplTest {
         when(sectorRepository.findById(69L)).thenReturn(Optional.of(sector));
 
         //act
-        String message = "Resource Sector not found for Id with value 69";
+        String message = "Resource Sector not found for Id with value 1337";
         Throwable exception = catchThrowable(()->{
-            sectorServiceImpl.getSectorById(69L);
+            sectorServiceImpl.getSectorById(1337L);
         });
         //assert
         assertThat(exception).isInstanceOf(ResourceNotFoundException.class).hasMessage(message);
@@ -90,7 +90,7 @@ public class SectorServiceImplTest {
         when(sectorRepository.findById(69L)).thenReturn(Optional.of(sector));
 
         //act
-        String message = "Resource Sector not found for Id with value 69";
+        String message = "Resource Sector not found for Id with value 1337";
         Throwable exception = catchThrowable(()->{
             sectorServiceImpl.getSectorById(1337L);
         });
@@ -118,7 +118,7 @@ public class SectorServiceImplTest {
         when(sectorRepository.findById(69L)).thenReturn(Optional.of(sector));
 
         //act
-        String message = "Resource Sector not found for Id with value 69";
+        String message = "Resource Sector not found for Id with value 1337";
         Throwable exception = catchThrowable(()->{
             sectorServiceImpl.getSectorById(1337L);
         });
@@ -134,13 +134,11 @@ public class SectorServiceImplTest {
         when(sectorRepository.findById(69L)).thenReturn(Optional.of(sector));
         Sector sectorRequest = new Sector();
         sectorRequest.setDescription("sample text2");
-        sectorRequest.setId(420L);
         sectorRequest.setName("Sector 420");
         //act
         Sector response = sectorServiceImpl.updateSector(69L,sectorRequest);
         //assert
-        assertEquals(420L, response.getId());
-
+        assertEquals(69L, response.getId());
     }
 
     @Test
@@ -150,7 +148,7 @@ public class SectorServiceImplTest {
         when(sectorRepository.findById(69L)).thenReturn(Optional.of(sector));
 
         //act
-        String message = "Resource Sector not found for Id with value 69";
+        String message = "Resource Sector not found for Id with value 1337";
         Throwable exception = catchThrowable(()->{
             sectorServiceImpl.getSectorById(1337L);
         });

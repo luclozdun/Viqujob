@@ -32,7 +32,7 @@ pipeline {
         stage('test') {
             steps {
               dir('ViQuJob') {
-                bat 'mvn clean compile test'
+                bat 'mvn test'
               }
             }
         }

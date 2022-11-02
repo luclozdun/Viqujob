@@ -26,7 +26,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 @Component
 public class JwtFilter extends OncePerRequestFilter {
-    // Documentar si es necesario caso contrario eliminar
+    // Documentar si es necesario caso
     @Autowired
     private JwtUtil jwtUtil;
 

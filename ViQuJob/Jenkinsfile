@@ -3,7 +3,7 @@ pipeline {
 
      environment {
         SPRING_DATABASE_URL = "jdbc:postgresql://localhost:5432/hola"
-        SPRING_USERNAME = "root"
+        SPRING_USERNAME = "rot"
         SPRING_PASSWORD = "password"
       }
 

@@ -3,13 +3,11 @@ pipeline {
 
     stages {
        stage('Env Variable'){
-            steps {
+            environment {
               dir('ViQuJob') {
-                environment{
-                  SPRING_DATABASE_URL = "jdbc:postgresql://localhost:5432/hola"
-                  SPRING_USERNAME = "root"
-                  SPRING_PASSWORD = "password"
-                }
+                SPRING_DATABASE_URL = "jdbc:postgresql://localhost:5432/hola"
+                SPRING_USERNAME = "root"
+                SPRING_PASSWORD = "password"
               }
             }
        }

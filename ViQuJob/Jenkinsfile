@@ -2,10 +2,24 @@ pipeline {
     agent any
 
     stages {
-       stage('package') {
+       stage('clean') {
             steps {
               dir('ViQuJob') {
                 bat 'mvn clean compile package'
+              }
+            }
+        }
+        stage('compile') {
+            steps {
+              dir('ViQuJob') {
+                bat 'mvn compile'
+              }
+            }
+        }
+        stage('package') {
+            steps {
+              dir('ViQuJob') {
+                bat 'mvn package -DskipTests'
               }
             }
         }

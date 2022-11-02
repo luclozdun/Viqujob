@@ -2,17 +2,12 @@ pipeline {
     agent any
 
      environment {
-        dir('ViQuJob') {
-          SPRING_DATABASE_URL = "jdbc:postgresql://localhost:5432/hola"
+        SPRING_DATABASE_URL = "jdbc:postgresql://localhost:5432/hola"
           SPRING_USERNAME = "root"
           SPRING_PASSWORD = "password"
-        }
       }
 
     stages {
-       stage('Env Variable'){
-           
-       }
        stage('clean') {
             steps {
               dir('ViQuJob') {

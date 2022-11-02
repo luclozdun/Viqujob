@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    generate-dll: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+    url: ${SPRING_DATABASE_URL}
+    username: ${SPRING_USERNAME}
+    password: ${SPRING_PASSWORD}
+    hikari:
+      auto-commit: false
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+# Swagger Configuration Properties
+server:
+  servlet:
+    context-path: /api

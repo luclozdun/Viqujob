@@ -30,16 +30,16 @@ public class AuthenticateServiceImpl implements AuthenticateService {
 
     @Override
     public String authenticateEmployer(SaveAuthenticateResource resource) {
-        var employer = employerRepository.findByEmail(resource.getEmail())
+        Employer employer = employerRepository.findByEmail(resource.getEmail())
                 .orElseThrow(() -> new ResourceNotFoundException("Invalid Credentials"));
 
-        var valid = encoder.matches(resource.getPassword(), employer.getPassword());
+        Boolean valid = encoder.matches(resource.getPassword(), employer.getPassword());
 
         if (!valid) {
             throw new ResourceNotFoundException("Invalid Credentials");
         }
 
-        var token = jwtUtil.generateToken(employer.getFirstname(), employer.getNumber(),
+        String token = jwtUtil.generateToken(employer.getFirstname(), employer.getNumber(),
                 "EMPLOYER");
 
         return token;
@@ -47,16 +47,16 @@ public class AuthenticateServiceImpl implements AuthenticateService {
 
     @Override
     public String authenticatePostulant(SaveAuthenticateResource resource) {
-        var postulant = postulantRepository.findByEmail(resource.getEmail())
+        Postulant postulant = postulantRepository.findByEmail(resource.getEmail())
                 .orElseThrow(() -> new ResourceNotFoundException("Invalid Credentials"));
 
-        var valid = encoder.matches(resource.getPassword(), postulant.getPassword());
+        Boolean valid = encoder.matches(resource.getPassword(), postulant.getPassword());
 
         if (!valid) {
             throw new ResourceNotFoundException("Invalid Credentials");
         }
 
-        var token = jwtUtil.generateToken(postulant.getFirstname(), postulant.getNumber(),
+        String token = jwtUtil.generateToken(postulant.getFirstname(), postulant.getNumber(),
                 "POSTULANT");
 
         return token;
@@ -64,7 +64,7 @@ public class AuthenticateServiceImpl implements AuthenticateService {
 
     @Override
     public Employer authenticateEmployerFilter(String email) {
-        var employer = employerRepository.findByEmail(email)
+        Employer employer = employerRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("Invalid Credentials"));
 
         return employer;
@@ -72,7 +72,7 @@ public class AuthenticateServiceImpl implements AuthenticateService {
 
     @Override
     public Postulant authenticatePostulantFilter(String email) {
-        var employer = postulantRepository.findByEmail(email)
+        Postulant employer = postulantRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("Invalid Credentials"));
 
         return employer;

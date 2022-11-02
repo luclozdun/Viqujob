@@ -9,7 +9,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.viqujob.jobagapi.exception.ResourceNotFoundException;
+import com.viqujob.jobagapi.security.domain.model.Employer;
+import com.viqujob.jobagapi.security.domain.model.Postulant;
 import com.viqujob.jobagapi.security.domain.service.AuthenticateService;
 import com.viqujob.jobagapi.security.util.JwtUtil;
 
@@ -43,7 +46,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             token = authorizationHeader.substring(7);
-            var data = jwtUtil.getAllClaimsFromToken(token);
+            DecodedJWT data = jwtUtil.getAllClaimsFromToken(token);
             email = data.getHeaderClaim("sub").toString();
             role = data.getHeaderClaim("role").toString();
         }
@@ -53,11 +56,11 @@ public class JwtFilter extends OncePerRequestFilter {
             List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
             if (role.equals("EMPLOYER")) {
                 authorities.add(new SimpleGrantedAuthority("EMPLOYER"));
-                var employer = authenticateService.authenticateEmployerFilter(email);
+                Employer employer = authenticateService.authenticateEmployerFilter(email);
                 userDetails = new User(employer.getEmail(), employer.getPassword(), authorities);
             } else if (role.equals("POSTULANT")) {
                 authorities.add(new SimpleGrantedAuthority("EMPLOYEE"));
-                var postulant = authenticateService.authenticatePostulantFilter(email);
+                Postulant postulant = authenticateService.authenticatePostulantFilter(email);
                 userDetails = new User(postulant.getEmail(), postulant.getPassword(), authorities);
             } else {
                 throw new ResourceNotFoundException("Error ocurred while Filter Internal");

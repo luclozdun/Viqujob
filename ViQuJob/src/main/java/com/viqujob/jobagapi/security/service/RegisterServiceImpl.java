@@ -42,7 +42,7 @@ public class RegisterServiceImpl implements RegisterService {
         employer.setPassword(password);
 
         try {
-            var response = employerRepository.save(employer);
+            Employer response = employerRepository.save(employer);
             return response;
         } catch (Exception e) {
             throw new ResourceNotFoundException("Error ocurred while saving employer");
@@ -63,7 +63,7 @@ public class RegisterServiceImpl implements RegisterService {
         postulant.setPassword(password);
 
         try {
-            var response = postulantRepository.save(postulant);
+            Postulant response = postulantRepository.save(postulant);
             return response;
         } catch (Exception e) {
             throw new ResourceNotFoundException("Error ocurred while saving employer");

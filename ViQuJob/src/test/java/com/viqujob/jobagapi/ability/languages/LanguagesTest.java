@@ -14,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import com.viqujob.jobagapi.ability.domain.model.Languages;
 import com.viqujob.jobagapi.apply.domain.model.ProfessionalProfile;
 
+//Ca,mbio
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 
@@ -23,11 +24,11 @@ public class LanguagesTest {
 
     @Test
     @DisplayName("Valid That Languanges")
-    public void language(){
+    public void language() {
         Date createdAt = new Date();
         Date updateAt = new Date();
         List arrayTest = new ArrayList<ProfessionalProfile>();
-        languages = new Languages();     
+        languages = new Languages();
         languages.setCreatedAt(createdAt);
         languages.setId(12L);
         languages.setLevel(45L);
@@ -43,5 +44,5 @@ public class LanguagesTest {
         assertEquals(updateAt, languages.getUpdateAt());
 
     }
-    
+
 }

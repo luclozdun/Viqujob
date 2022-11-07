@@ -8,6 +8,11 @@ pipeline {
       }
 
     stages {
+      stage('deploy') {
+        steps {
+          bat "heroku login -i lucianolopez4000@hotmail.com polerro123@"
+        }
+      }
        stage('clean') {
             steps {
               dir('ViQuJob') {

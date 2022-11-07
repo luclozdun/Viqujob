@@ -39,10 +39,14 @@ pipeline {
         }
         stage('deploy') {
           steps {
-              dir('ViQuJob') {
-                bat 'mvn test'
+            withCredentials([usernamePassword(credentialsId:'dockerid',usernameVariable:'USR',passwordVariable:'PWD')])
+              {
+                  bat "heroku login -u=${env.USR} -p=${env.PWD}"
               }
-            }
+              bat "git add ."
+              bat "git commit -m 'deploy'"
+              bat "git push heroku master"
+          }
       }
     }
 }

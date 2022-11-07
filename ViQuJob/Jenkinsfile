@@ -39,14 +39,10 @@ pipeline {
         }
         stage('deploy') {
           steps {
-            withCredentials([usernamePassword(credentialsId:'dockerid',usernameVariable:'USR',passwordVariable:'PWD')])
-              {
-                  bat "heroku login -u=${env.USR} -p=${env.PWD}"
+              dir('ViQuJob') {
+                bat 'mvn package'
               }
-              bat "git add ."
-              bat "git commit -m 'deploy'"
-              bat "git push heroku master"
-          }
+            }
       }
     }
 }

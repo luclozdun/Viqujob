@@ -30,12 +30,17 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public Employer createEmployer(Employer employer) {
 
-        if (userRepository.existsByEmail(employer.getEmail())) {
+        System.out.println("Paso por aca ------------------------ 11");
+        if (userRepository.existsByEmail(employer.getEmail()).equals(true)) {
             throw new ResourceNotFoundException("El email ya esta en uso");
         }
-        if (userRepository.existsByNumber(employer.getNumber())) {
+
+        System.out.println("Paso por aca ------------------------ 22");
+        if (userRepository.existsByNumber(employer.getNumber()).equals(true)) {
             throw new ResourceNotFoundException("El numero ya esta en uso");
         }
+
+        System.out.println("Paso por aca ------------------------");
 
         String password = encrypt.encode(employer.getPassword());
 
@@ -51,16 +56,19 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public Postulant createPostulant(Postulant postulant) {
-        if (userRepository.existsByEmail(postulant.getEmail())) {
+        System.out.println("Paso por aca ------------------------ 11");
+        if (userRepository.existsByEmail(postulant.getEmail()).equals(true)) {
             throw new ResourceNotFoundException("El email ya esta en uso");
         }
-        if (userRepository.existsByNumber(postulant.getNumber())) {
+        System.out.println("Paso por aca ------------------------ 22");
+        if (userRepository.existsByNumber(postulant.getNumber()).equals(true)) {
             throw new ResourceNotFoundException("El numero ya esta en uso");
         }
-
+        System.out.println("Paso por aca ------------------------");
         String password = encrypt.encode(postulant.getPassword());
 
         postulant.setPassword(password);
+        System.out.println("Paso por aca ------------------------");
 
         try {
             Postulant response = postulantRepository.save(postulant);

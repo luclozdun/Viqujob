@@ -5,24 +5,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
-import com.viqujob.jobagapi.enterprise.domain.model.Company;
-
 @Table(name = "quejas")
 @Entity
 public class Queja {
+    @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
     private String description;
 
-    private Company company;
+    private Long cid;
 
-    public Company getCompany() {
-        return company;
+    public Long getCid() {
+        return cid;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setCid(Long cid) {
+        this.cid = cid;
     }
 
     public Long getId() {

@@ -17,7 +17,7 @@ public class QuejaServiceImpl implements QuejaService {
 
     @Override
     public List<Queja> findAll(Long companyId) {
-        return quejaRepository.findAllByCompanyId(companyId);
+        return quejaRepository.FindCompany(companyId);
     }
 
     @Override
